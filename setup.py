@@ -33,6 +33,10 @@ def make_extension(name, package):
 with open(path.join(here, "README.md"), encoding="utf-8") as f:
     long_description = f.read()
 
+requirements = []
+with open("requirements.txt") as f:
+    requirements = f.read().splitlines()
+
 setuptools.setup(
     # Meta-data
     name="seamseg",
@@ -56,6 +60,7 @@ setuptools.setup(
     # Requirements
     setup_requires=["setuptools_scm"],
     python_requires=">=3, <4",
+    install_requires=requirements,
 
     # Package description
     packages=[
